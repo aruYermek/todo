@@ -1,3 +1,6 @@
 build/bin
-node_modules
 frontend/dist
+node_modules/
+dist/
+tasks.json
+.env

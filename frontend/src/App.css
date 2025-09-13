@@ -1,59 +1,351 @@
-#app {
-    height: 100vh;
-    text-align: center;
+/* === Переменные цветов === */
+:root {
+  --bg: #f5f7fa;
+  --card-bg: #ffffff;
+  --text: #333;
+  --primary: #007bff;
+  --danger: #dc3545;
+  --border: #ddd;
 }
 
-#logo {
-    display: block;
-    width: 50%;
-    height: 50%;
-    margin: auto;
-    padding: 10% 0 0;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-origin: content-box;
+/* --- Тёмная тема --- */
+.container.dark {
+  --bg: #1e1e1e;
+  --card-bg: #2c2c2c;
+  --text: #f5f5f5;
+  --primary: #4e9af1;
+  --danger: #f85c5c;
+  --border: #555;
 }
 
-.result {
-    height: 20px;
-    line-height: 20px;
-    margin: 1.5rem auto;
+.container.dark input,
+.container.dark select,
+.container.dark button {
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
 }
 
-.input-box .btn {
-    width: 60px;
-    height: 30px;
-    line-height: 30px;
-    border-radius: 3px;
-    border: none;
-    margin: 0 0 0 20px;
-    padding: 0 8px;
-    cursor: pointer;
+.container.dark button {
+  background: var(--primary);
+  color: #fff;
 }
 
-.input-box .btn:hover {
-    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-    color: #333333;
+.container.dark button.delete {
+  background: var(--danger);
 }
 
-.input-box .input {
-    border: none;
-    border-radius: 3px;
-    outline: none;
-    height: 30px;
-    line-height: 30px;
-    padding: 0 10px;
-    background-color: rgba(240, 240, 240, 1);
-    -webkit-font-smoothing: antialiased;
+.container.dark button.delete:hover {
+  background: #c53939;
 }
 
-.input-box .input:hover {
-    border: none;
-    background-color: rgba(255, 255, 255, 1);
+.container.dark .filters button {
+  background: #3a3a3a;
+  color: var(--text);
+  border: 1px solid var(--border);
 }
 
-.input-box .input:focus {
-    border: none;
-    background-color: rgba(255, 255, 255, 1);
+.container.dark .filters button.active {
+  background: var(--primary);
+  color: #fff;
+}
+
+.container.dark .task {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+}
+
+.container.dark .task.overdue {
+  background: #5a1e1e;
+}
+
+.container.dark .modal {
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* === Общие стили === */
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  font-family: sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: background 0.3s, color 0.3s;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+
+/* --- Форма добавления задач --- */
+.form {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  background: var(--card-bg);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: background 0.3s;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 175px;
+}
+
+.form-group-button {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100%;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.form-group-button button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  background: var(--primary);
+  color: white;
+  font-weight: bold;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.form-group-button button:hover {
+  background: #0056b3;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+input, select, button {
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 14px;
+  background: var(--card-bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+button {
+  cursor: pointer;
+  background: var(--primary);
+  color: white;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+button.delete {
+  background: var(--danger);
+}
+
+button.delete:hover {
+  background: #a71d2a;
+}
+
+/* --- Панель фильтров и сортировки --- */
+.filters {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.filters button {
+  margin: 0 5px;
+  background: #e9ecef;
+  color: #333;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.filters button.active {
+  background: var(--primary);
+  color: white;
+}
+
+/* --- Список задач --- */
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card-bg);
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+.task.overdue {
+  background: #ffe5e5;
+}
+
+.task-text.done {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.deadline {
+  margin-left: 10px;
+  font-size: 12px;
+  color: #555;
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* --- Модальные окна --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 300px;
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* --- Кнопка переключения темы --- */
+.theme-toggle {
+  display: block;
+  margin: 0 auto 20px auto;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  background: var(--primary);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.theme-toggle:hover {
+  background: #0056b3;
+}
+
+/* === Адаптивная верстка === */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .form {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .form-group,
+  .form-group-button {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .filters button {
+    margin: 5px 2px;
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .task {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .task-actions {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .task-text {
+    font-size: 14px;
+    word-break: break-word;
+  }
+
+  .modal {
+    width: 90%;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  .form-group label,
+  .filters button,
+  .task-text {
+    font-size: 13px;
+  }
+
+  .form-group-button button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .task-actions button {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
 }

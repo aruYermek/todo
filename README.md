@@ -1,19 +1,79 @@
-# README
+# To-Do List Wails App
 
-## About
+## Описание проекта
+Кросс-платформенное настольное приложение To-Do List, разработанное с использованием **Wails (Go + React)**.  
+Позволяет пользователю управлять задачами: добавлять, удалять, отмечать как выполненные, сортировать и фильтровать.  
+Состояние задач сохраняется между перезапусками приложения с помощью локального файла `tasks.json`.
 
-This is the official Wails React-TS template.
+---
 
-You can configure the project by editing `wails.json`. More information about the project settings can be found
-here: https://wails.io/docs/reference/project-config
+## Технологии
+- **Go** – backend, логика приложения
+- **React** – frontend, интерфейс пользователя
+- **Wails v2** – кросс-платформенный desktop фреймворк
+- **CSS** – стилизация, поддержка светлой и тёмной темы
 
-## Live Development
+---
 
-To run in live development mode, run `wails dev` in the project directory. This will run a Vite development
-server that will provide very fast hot reload of your frontend changes. If you want to develop in a browser
-and have access to your Go methods, there is also a dev server that runs on http://localhost:34115. Connect
-to this in your browser, and you can call your Go code from devtools.
+## Основные возможности
+- Добавление задач с текстом, приоритетом (низкий/средний/высокий) и дедлайном  
+- Удаление задач с подтверждением через модальное окно  
+- Отметка задачи как выполненной и возврат в активные  
+- Фильтрация задач по статусу (все, активные, выполненные) и по времени (сегодня, неделя, месяц)  
+- Сортировка задач по дате или приоритету  
+- Поддержка светлой и тёмной темы  
+- Адаптивный интерфейс  
+- Сохранение состояния задач при закрытии приложения
 
-## Building
+---
 
-To build a redistributable, production mode package, use `wails build`.
+## Структура проекта
+todo-app/
+├─ frontend/ # React фронтенд
+├─ main.go # Wails main
+├─ App.go # Логика приложения (Go)
+├─ tasks.json # Локальное хранение задач
+├─ .gitignore
+├─ README.md
+
+
+---
+
+## Установка и запуск
+1. Установить [Go](https://go.dev/) и [Node.js](https://nodejs.org/)
+2. Установить Wails:
+```bash
+go install github.com/wailsapp/wails/v2/cmd/wails@latest
+
+Установить зависимости фронтенда:
+
+cd frontend
+npm install
+
+Запуск в режиме разработки:
+wails dev
+
+---
+
+## Скриншоты
+![Главный экран](\screenshots\main-page.png)
+![Добавление задачи](\screenshots\enter-todo.png)
+![Все задачи](\screenshots\add-todo.png)
+![Добавление задачи с временем](\screenshots\enter-todo-withtime.png)
+![Раздел активные](\screenshots\active.png)
+![Раздел выполненные](\screenshots\done.png)
+![Сортировка по дате](\screenshots\sorting-date.png)
+![Сортировка по приоритету](\screenshots\sorting-degree.png)
+![Фильтр](\screenshots\filter.png)
+![Завершить задачу](\screenshots\todo-done.png)
+![Удалить задачу](\screenshots\delete.png)
+![Адаптивность](\screenshots\responsive.png)
+![Темная тема](\screenshots\dark.png)
+
+
+Видео демонстрация
+
+Ссылка на видео - 
+
+
+
