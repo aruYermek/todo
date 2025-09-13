@@ -56,7 +56,7 @@ wails dev
 ---
 
 ## Скриншоты
-![Главный экран](screenshots/main-page.png)
+![Главный экран](todo/screenshots/main-page.png)
 ![Добавление задачи](screenshots/enter-todo.png)
 ![Все задачи](screenshots/add-todo.png)
 ![Добавление задачи с временем](screenshots/enter-todo-withtime.png)
