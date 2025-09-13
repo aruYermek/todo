@@ -42,7 +42,7 @@ todo-app/
 ## Установка и запуск
 1. Установить [Go](https://go.dev/) и [Node.js](https://nodejs.org/)
 2. Установить Wails:
-```bash
+
 go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
 Установить зависимости фронтенда:
@@ -55,20 +55,22 @@ wails dev
 
 ---
 
-## Скриншоты
-![Главный экран](https://github.com/aruYermek/todo/screenshots/main-page.png)
-![Добавление задачи](https://github.com/aruYermek/todo/raw/main/screenshots/enter-todo.png)
-![Все задачи](https://github.com/aruYermek/todo/raw/main/screenshots/add-todo.png)
-![Добавление задачи с временем](https://github.com/aruYermek/todo/raw/main/screenshots/enter-todo-withtime.png)
-![Раздел активные](https://github.com/aruYermek/todo/raw/main/screenshots/active.png)
-![Раздел выполненные](https://github.com/aruYermek/todo/raw/main/screenshots/done.png)
-![Сортировка по дате](https://github.com/aruYermek/todo/raw/main/screenshots/sorting-date.png)
-![Сортировка по приоритету](https://github.com/aruYermek/todo/raw/main/screenshots/sorting-degree.png)
-![Фильтр](https://github.com/aruYermek/todo/raw/main/screenshots/filter.png)
-![Завершить задачу](https://github.com/aruYermek/todo/raw/main/screenshots/todo-done.png)
-![Удалить задачу](https://github.com/aruYermek/todo/raw/main/screenshots/delete.png)
-![Адаптивность](https://github.com/aruYermek/todo/raw/main/screenshots/responsive.png)
-![Темная тема](https://github.com/aruYermek/todo/raw/main/screenshots/dark.png)
+| Скриншот | Описание |
+|----------|----------|
+| ![Главный экран](https://raw.githubusercontent.com/aruYermek/todo/master/screenshots/main-page.png) | Главный экран |
+| ![Добавление задачи](https://raw.githubusercontent.com/aruYermek/todo/master/screenshots/enter-todo.png) | Добавление задачи |
+| ![Все задачи](https://raw.githubusercontent.com/aruYermek/todo/master/screenshots/add-todo.png) | Все задачи |
+| ![Добавление задачи с временем](https://raw.githubusercontent.com/aruYermek/todo/master/screenshots/enter-todo-withtime.png) | Добавление задачи с временем |
+| ![Раздел активные](https://raw.githubusercontent.com/aruYermek/todo/master/screenshots/active.png) | Раздел активные |
+| ![Раздел выполненные](https://raw.githubusercontent.com/aruYermek/todo/master/screenshots/done.png) | Раздел выполненные |
+| ![Сортировка по дате](https://raw.githubusercontent.com/aruYermek/todo/master/screenshots/sorting-date.png) | Сортировка по дате |
+| ![Сортировка по приоритету](https://raw.githubusercontent.com/aruYermek/todo/master/screenshots/sorting-degree.png) | Сортировка по приоритету |
+| ![Фильтр](https://raw.githubusercontent.com/aruYermek/todo/master/screenshots/filter.png) | Фильтр |
+| ![Завершить задачу](https://raw.githubusercontent.com/aruYermek/todo/master/screenshots/todo-done.png) | Завершить задачу |
+| ![Удалить задачу](https://raw.githubusercontent.com/aruYermek/todo/master/screenshots/delete.png) | Удалить задачу |
+| ![Адаптивность](https://raw.githubusercontent.com/aruYermek/todo/master/screenshots/responsive.png) | Адаптивность |
+| ![Темная тема](https://raw.githubusercontent.com/aruYermek/todo/master/screenshots/dark.png) | Темная тема |
+
 
 
 
