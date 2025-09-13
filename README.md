@@ -56,19 +56,20 @@ wails dev
 ---
 
 ## Скриншоты
-![Главный экран](todo/screenshots/main-page.png)
-![Добавление задачи](screenshots/enter-todo.png)
-![Все задачи](screenshots/add-todo.png)
-![Добавление задачи с временем](screenshots/enter-todo-withtime.png)
-![Раздел активные](screenshots/active.png)
-![Раздел выполненные](screenshots/done.png)
-![Сортировка по дате](screenshots/sorting-date.png)
-![Сортировка по приоритету](screenshots/sorting-degree.png)
-![Фильтр](screenshots/filter.png)
-![Завершить задачу](screenshots/todo-done.png)
-![Удалить задачу](screenshots/delete.png)
-![Адаптивность](screenshots/responsive.png)
-![Темная тема](screenshots/dark.png)
+![Главный экран](https://github.com/aruYermek/todo/raw/main/screenshots/main-page.png)
+![Добавление задачи](https://github.com/aruYermek/todo/raw/main/screenshots/enter-todo.png)
+![Все задачи](https://github.com/aruYermek/todo/raw/main/screenshots/add-todo.png)
+![Добавление задачи с временем](https://github.com/aruYermek/todo/raw/main/screenshots/enter-todo-withtime.png)
+![Раздел активные](https://github.com/aruYermek/todo/raw/main/screenshots/active.png)
+![Раздел выполненные](https://github.com/aruYermek/todo/raw/main/screenshots/done.png)
+![Сортировка по дате](https://github.com/aruYermek/todo/raw/main/screenshots/sorting-date.png)
+![Сортировка по приоритету](https://github.com/aruYermek/todo/raw/main/screenshots/sorting-degree.png)
+![Фильтр](https://github.com/aruYermek/todo/raw/main/screenshots/filter.png)
+![Завершить задачу](https://github.com/aruYermek/todo/raw/main/screenshots/todo-done.png)
+![Удалить задачу](https://github.com/aruYermek/todo/raw/main/screenshots/delete.png)
+![Адаптивность](https://github.com/aruYermek/todo/raw/main/screenshots/responsive.png)
+![Темная тема](https://github.com/aruYermek/todo/raw/main/screenshots/dark.png)
+
 
 
 Видео демонстрация
