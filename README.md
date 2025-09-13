@@ -56,7 +56,7 @@ wails dev
 ---
 
 ## Скриншоты
-![Главный экран](https://github.com/aruYermek/todo/raw/main/screenshots/main-page.png)
+![Главный экран](https://github.com/aruYermek/todo/screenshots/main-page.png)
 ![Добавление задачи](https://github.com/aruYermek/todo/raw/main/screenshots/enter-todo.png)
 ![Все задачи](https://github.com/aruYermek/todo/raw/main/screenshots/add-todo.png)
 ![Добавление задачи с временем](https://github.com/aruYermek/todo/raw/main/screenshots/enter-todo-withtime.png)
