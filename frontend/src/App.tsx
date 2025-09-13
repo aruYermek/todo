@@ -7,7 +7,6 @@ import {
 } from "../wailsjs/go/main/App";
 import "./App.css";
 
-// Локальный тип для фронтенда
 interface LocalTask {
   id: number;
   text: string;
@@ -18,46 +17,36 @@ interface LocalTask {
   deadlineDate?: Date;
 }
 
-// Типы фильтров и сортировки
 type Filter = "all" | "active" | "done";
 type DateFilter = "all" | "today" | "week" | "month";
 type SortBy = "none" | "date" | "priority";
 
 function App() {
-  // Состояния приложения
-  const [tasks, setTasks] = useState<LocalTask[]>([]); 
-  const [newTask, setNewTask] = useState(""); 
-  const [priority, setPriority] = useState("medium"); 
-  const [deadlineDateInput, setDeadlineDateInput] = useState(""); 
-  const [deadlineTimeInput, setDeadlineTimeInput] = useState(""); 
-  const [filter, setFilter] = useState<Filter>("all"); 
-  const [dateFilter, setDateFilter] = useState<DateFilter>("all"); 
-  const [sortBy, setSortBy] = useState<SortBy>("none"); 
-  const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null); 
-  const [darkMode, setDarkMode] = useState(false); 
+  const [tasks, setTasks] = useState<LocalTask[]>([]);
+  const [newTask, setNewTask] = useState("");
+  const [priority, setPriority] = useState("medium");
+  const [deadlineDateInput, setDeadlineDateInput] = useState("");
+  const [deadlineTimeInput, setDeadlineTimeInput] = useState("");
+  const [filter, setFilter] = useState<Filter>("all");
+  const [dateFilter, setDateFilter] = useState<DateFilter>("all");
+  const [sortBy, setSortBy] = useState<SortBy>("none");
+  const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null);
+  const [darkMode, setDarkMode] = useState(false);
 
-  // Загрузка задач при монтировании компонента
   useEffect(() => {
     loadTasks();
   }, []);
 
-  // Функция загрузки задач с бэкенда
   const loadTasks = () => {
     GetTasks().then((result) => {
       const updated: LocalTask[] = result.map((t) => ({
-        id: t.id,
-        text: t.text,
-        done: t.done,
-        priority: t.priority,
-        created_at: t.created_at,
-        deadline: t.deadline,
+        ...t,
         deadlineDate: t.deadline ? new Date(t.deadline) : undefined,
       }));
       setTasks(updated);
     });
   };
 
-  // Добавление новой задачи
   const handleAdd = () => {
     if (!newTask.trim()) return;
 
@@ -65,22 +54,17 @@ function App() {
     if (deadlineDateInput && deadlineTimeInput) {
       const [year, month, day] = deadlineDateInput.split("-").map(Number);
       const [hours, minutes] = deadlineTimeInput.split(":").map(Number);
-      deadline = new Date(year, month - 1, day, hours, minutes); 
+      deadline = new Date(year, month - 1, day, hours, minutes);
     }
 
     const deadlineStr = deadline ? deadline.toISOString() : "";
 
     AddTask(newTask, priority, deadlineStr).then((task) => {
       const localTask: LocalTask = {
-        id: task.id,
-        text: task.text,
-        done: task.done,
-        priority: task.priority,
-        created_at: task.created_at,
-        deadline: task.deadline,
+        ...task,
         deadlineDate: deadline,
       };
-      setTasks((prev) => [localTask, ...prev]); 
+      setTasks((prev) => [localTask, ...prev]);
       setNewTask("");
       setPriority("medium");
       setDeadlineDateInput("");
@@ -88,7 +72,6 @@ function App() {
     });
   };
 
-  // Удаление задачи
   const handleDelete = (id: number) => {
     DeleteTask(id).then(() => {
       loadTasks();
@@ -96,14 +79,12 @@ function App() {
     });
   };
 
-  // Переключение статуса задачи (выполнена/не выполнена)
   const handleToggle = (id: number) => {
     ToggleTask(id).then(() => {
-      loadTasks(); 
+      loadTasks();
     });
   };
 
-  // Форматирование даты дедлайна для отображения
   const formatDeadline = (date: Date) => {
     const day = String(date.getDate()).padStart(2, "0");
     const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -113,51 +94,52 @@ function App() {
     return `${day}.${month}.${year} ${hours}:${minutes}`;
   };
 
-  // --- Фильтрация по статусу ---
-  let filteredTasks = tasks.filter((t) => {
-    if (filter === "active") return !t.done;
-    if (filter === "done") return t.done;
-    return true;
-  });
-
-  // --- Фильтрация по времени ---
+  // --- Фильтрация и сортировка ---
   const now = new Date();
-  filteredTasks = filteredTasks.filter((t) => {
-    const deadline = t.deadlineDate;
-    if (!deadline) return dateFilter === "all";
+  let filteredTasks = tasks
+    .filter((t) => {
+      if (filter === "active") return !t.done;
+      if (filter === "done") return t.done;
+      return true;
+    })
+    .filter((t) => {
+      const deadline = t.deadlineDate;
+      if (!deadline) return dateFilter === "all";
 
-    const isToday = deadline.toDateString() === now.toDateString();
-    const isThisWeek =
-      deadline >= now &&
-      deadline < new Date(now.getFullYear(), now.getMonth(), now.getDate() + 7);
-    const isThisMonth =
-      deadline.getMonth() === now.getMonth() &&
-      deadline.getFullYear() === now.getFullYear();
+      const isToday = deadline.toDateString() === now.toDateString();
+      const isThisWeek =
+        deadline >= now &&
+        deadline < new Date(now.getFullYear(), now.getMonth(), now.getDate() + 7);
+      const isThisMonth =
+        deadline.getMonth() === now.getMonth() &&
+        deadline.getFullYear() === now.getFullYear();
 
-    if (dateFilter === "today") return isToday;
-    if (dateFilter === "week") return isThisWeek;
-    if (dateFilter === "month") return isThisMonth;
-    return true;
-  });
+      if (dateFilter === "today") return isToday;
+      if (dateFilter === "week") return isThisWeek;
+      if (dateFilter === "month") return isThisMonth;
+      return true;
+    });
 
   // --- Сортировка ---
-  if (sortBy === "date") {
-    filteredTasks.sort((a, b) => {
+  filteredTasks.sort((a, b) => {
+    // Сначала по статусу (done вниз)
+    if (a.done !== b.done) return Number(a.done) - Number(b.done);
+
+    // Потом по выбранной сортировке
+    if (sortBy === "date") {
       const da = a.deadlineDate ? a.deadlineDate.getTime() : Infinity;
       const db = b.deadlineDate ? b.deadlineDate.getTime() : Infinity;
       return da - db;
-    });
-  }
+    }
 
-  if (sortBy === "priority") {
-    const order: Record<string, number> = { high: 1, medium: 2, low: 3 };
-    filteredTasks.sort((a, b) => order[a.priority] - order[b.priority]);
-  }
+    if (sortBy === "priority") {
+      const order: Record<string, number> = { high: 1, medium: 2, low: 3 };
+      return order[a.priority] - order[b.priority];
+    }
 
+    return 0;
+  });
 
-  filteredTasks.sort((a, b) => Number(a.done) - Number(b.done));
-
-  // Цвета приоритета
   const priorityColors: Record<string, string> = {
     low: "green",
     medium: "orange",
@@ -171,7 +153,7 @@ function App() {
         style={{ marginBottom: 15 }}
         onClick={() => setDarkMode((prev) => !prev)}
       >
-       {darkMode ? "Светлая" : "Тёмная"} тема
+        {darkMode ? "Светлая" : "Тёмная"} тема
       </button>
 
       {/* Форма добавления задачи */}
