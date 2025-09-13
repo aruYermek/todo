@@ -76,7 +76,7 @@ wails dev
 
 Видео демонстрация
 
-Ссылка на видео - 
+Ссылка на видео - https://youtu.be/lU280aM_DSY?si=8nheerVLl2fLODlF
 
 
 
