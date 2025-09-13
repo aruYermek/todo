@@ -56,19 +56,19 @@ wails dev
 ---
 
 ## Скриншоты
-![Главный экран](\screenshots\main-page.png)
-![Добавление задачи](\screenshots\enter-todo.png)
-![Все задачи](\screenshots\add-todo.png)
-![Добавление задачи с временем](\screenshots\enter-todo-withtime.png)
-![Раздел активные](\screenshots\active.png)
-![Раздел выполненные](\screenshots\done.png)
-![Сортировка по дате](\screenshots\sorting-date.png)
-![Сортировка по приоритету](\screenshots\sorting-degree.png)
-![Фильтр](\screenshots\filter.png)
-![Завершить задачу](\screenshots\todo-done.png)
-![Удалить задачу](\screenshots\delete.png)
-![Адаптивность](\screenshots\responsive.png)
-![Темная тема](\screenshots\dark.png)
+![Главный экран](screenshots/main-page.png)
+![Добавление задачи](screenshots/enter-todo.png)
+![Все задачи](screenshots/add-todo.png)
+![Добавление задачи с временем](screenshots/enter-todo-withtime.png)
+![Раздел активные](screenshots/active.png)
+![Раздел выполненные](screenshots/done.png)
+![Сортировка по дате](screenshots/sorting-date.png)
+![Сортировка по приоритету](screenshots/sorting-degree.png)
+![Фильтр](screenshots/filter.png)
+![Завершить задачу](screenshots/todo-done.png)
+![Удалить задачу](screenshots/delete.png)
+![Адаптивность](screenshots/responsive.png)
+![Темная тема](screenshots/dark.png)
 
 
 Видео демонстрация
